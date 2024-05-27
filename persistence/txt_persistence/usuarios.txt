@@ -1,0 +1,4 @@
+sara,echeverri,123,456;sara,mesero
+sara,acosta,123,345;valentina,mesero
+sara,acosta,123,456,valentina,mesero
+sara,acosta,123,456,savb,cajero
