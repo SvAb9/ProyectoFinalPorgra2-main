@@ -24,7 +24,7 @@ public class Sandwich implements ComponenteSandwich {
     public double getCosto() {
         double costo = 2000; // Costo base del pan
         if (relleno != null && !relleno.isEmpty()) {
-            costo += 3000; // Costo del relleno
+            costo += 0000; // Costo del relleno
         }
         if (tieneQueso) {
             costo += 1000; // Costo del queso

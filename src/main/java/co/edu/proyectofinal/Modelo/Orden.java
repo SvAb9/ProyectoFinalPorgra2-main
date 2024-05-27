@@ -10,14 +10,14 @@ public class Orden {
     public Orden() {
         this.productos = new ArrayList<>();
         this.estado = "Pendiente";
-    }   
+    }
 
     public void agregarProducto(Producto producto) {
         productos.add(producto);
     }
 
     public double calcularTotal() {
-        return productos.stream().mapToDouble(Producto::getCosto).sum();
+        return productos.stream().mapToDouble(Producto::getPrecio).sum();
     }
 
     public void imprimirOrden() {
@@ -37,6 +37,11 @@ public class Orden {
         return productos;
     }
 
+    public void limpiarOrden() {
+        productos.clear();
+        estado = "Pendiente";
+    }
+
     public OrdenMemento guardar() {
         return new OrdenMemento(productos, estado);
     }
@@ -45,5 +50,4 @@ public class Orden {
         productos = memento.getProductos();
         estado = memento.getEstado();
     }
-    
 }

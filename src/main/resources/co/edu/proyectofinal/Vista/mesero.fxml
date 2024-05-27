@@ -28,5 +28,6 @@
                 <Button text="Actualizar Estado" onAction="#actualizarEstadoOrden" />
             </children>
         </HBox>
+        <Button text="Ir a Cajero" onAction="#regresarACajero" />
     </children>
 </VBox>

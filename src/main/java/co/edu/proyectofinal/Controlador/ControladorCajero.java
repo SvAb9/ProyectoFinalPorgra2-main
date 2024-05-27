@@ -11,23 +11,37 @@ public class ControladorCajero {
     private ListView<String> ordenesListView;
 
     private Cajero cajero;
-    private Mesero mesero;
+    private Orden orden;
 
     public void initialize() {
         cajero = new Cajero("Ana", "García", "agarcia", "5678", "987654321", "cajero");
-        mesero = new Mesero("Juan", "Pérez", "jperez", "1234", "123456789", "mesero");
+        actualizarListaOrdenes();
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+        actualizarListaOrdenes();
     }
 
     @FXML
     public void cobrarOrden() {
-        Orden orden = mesero.getOrden();
-        if (!orden.getProductos().isEmpty()) {
+        if (orden != null && !orden.getProductos().isEmpty()) {
             Factura factura = cajero.generarFactura(orden);
             cajero.agregarFactura(factura);
             mostrarAlerta("Total cobrado: $" + factura.getTotal());
-            ordenesListView.getItems().clear();
+            orden.limpiarOrden(); // Limpiar la orden después de cobrar
+            actualizarListaOrdenes();
         } else {
             mostrarAlerta("No hay órdenes para cobrar.");
+        }
+    }
+
+    private void actualizarListaOrdenes() {
+        if (orden != null) {
+            ordenesListView.getItems().clear();
+            for (Producto producto : orden.getProductos()) {
+                ordenesListView.getItems().add(producto.getNombre() + " - $" + producto.getPrecio());
+            }
         }
     }
 
