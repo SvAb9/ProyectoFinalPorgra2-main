@@ -1,7 +1,7 @@
 package co.edu.proyectofinal.Controlador;
+import Persistencia.UsuarioPersistencia;
 import co.edu.proyectofinal.Modelo.Persona;
 import Servicios.ServicioUsuario;
-import co.edu.proyectofinal.Modelo.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,9 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 
 public class ControladorLogin {
@@ -24,39 +25,58 @@ public class ControladorLogin {
     @FXML
     private PasswordField contraseñaPasswordField;
 
-    private final ServicioUsuario servicioUsuario = new ServicioUsuario();
-    private static final String USUARIO_FILE= "persistence\\txt_persistence\\usuarios.txt";
 
-    @FXML
-    public void iniciarSesion() {
-       try{
-            String usuario = usuarioTextField.getText();
-            String contraseña= contraseñaPasswordField.getText();
-            BufferedReader reader = new BufferedReader(new FileReader(USUARIO_FILE));
-            String line;
-            boolean encontrado= false;
+    private static final String USUARIO_FILE= "./persistence/txt_persistence/usuarios.txt";
+    private UsuarioPersistencia usuarioPersistencia;
+    private List<Persona> usuarios;
 
-            while ((line=reader.readLine()) !=null) {
-                String [] parts= line.split(",");
-                String usuarioTxt= parts[0];
-                String contraseñaTxt= parts[1];
-
-                if(usuario.equals(usuarioTxt) && contraseña.equals(contraseñaTxt)){
-                    encontrado=true;
-                    break;
-                }
-            }
-            reader.close();
-
-            if(encontrado){
-                mostrarMensaje("has iniciado sesión correctamente");
-            }else{
-                mostrarAlerta("Usuario o contraseña incorrectos");
-            }
-        }    catch(IOException e){
-            e.printStackTrace();
-            mostrarAlerta("Error al leer el archivo");}
+    public void initialize(URL url, ResourceBundle rb) {
+        usuarioPersistencia = new UsuarioPersistencia();
+        try {
+            usuarios = usuarioPersistencia.obtenerUsuarios();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo de texto: " + e.getMessage());
+            mostrarAlerta("Error al cargar los usuarios");
         }
+    }
+
+
+    public void iniciarSesion(){
+        String usuarioTxt= usuarioTextField.getText();
+        String contraseñaTxt= contraseñaPasswordField.getText();
+        Persona usuarioEncontrado= null;
+
+        for (Persona u: usuarios){
+
+            System.out.println(usuarioTxt);
+            System.out.println(contraseñaTxt);
+            if(u.getUsuario().equals(usuarioTxt) && u.getContraseña().equals(contraseñaTxt)){
+                usuarioEncontrado= u;
+                break;
+            }
+        }if (usuarioEncontrado != null){
+            mostrarMensaje("Has iniciado correctamente");
+
+            String tipoUsuario= usuarioEncontrado.getTipo().toLowerCase();
+            switch (tipoUsuario) {
+                case "mesero":
+                    cargarVista("mesero.fxml");
+                    break;
+                case "cajero":
+                    cargarVista("cajero.fxml");
+                    break;
+                case "propietario":
+                    cargarVista("propietario.fxml");
+                    break;
+
+                default:
+                    mostrarAlerta("El tipo de usuario no existe");
+                    break;
+            }
+        }else {
+            mostrarAlerta("Usuario o contraseña incorrectos");
+        }
+    }
 
     @FXML
     public void registrarUsuario() {

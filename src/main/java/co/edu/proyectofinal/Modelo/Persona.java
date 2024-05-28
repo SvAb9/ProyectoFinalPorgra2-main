@@ -49,15 +49,15 @@ public class Persona implements  GetTipo{
 
 
     public static Persona fromFileString (String fileString){
-        String[]parts = fileString.split(";");
-        if(parts.length != 6){
+        String[]parts = fileString.split(",");
+        if(parts.length == 6){
             throw new IllegalArgumentException("El archivo debe ser exactamente 5 elementos");
         }
-        return new Persona(parts[0],parts[1],parts[2],parts[3],parts[4], parts[5]);
+        return new Persona(parts[0].trim(),parts[1].trim(),parts[2].trim(),parts[3].trim(),parts[4].trim(), parts[5].trim());
     }
 
     public  String toFileString(){
-        return  nombre + "," + apellido + "," + documento + "," + usuario + "," + contraseña + "," + tipo;
+        return  nombre + "," + apellido + "," + usuario+ "," +contraseña  + "," +documento  + "," + tipo;
     }
 
     @Override

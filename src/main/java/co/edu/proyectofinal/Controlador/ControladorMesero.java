@@ -4,13 +4,11 @@ import co.edu.proyectofinal.Modelo.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class ControladorMesero {
@@ -24,8 +22,14 @@ public class ControladorMesero {
     private ListView<String> ordenListView;
     @FXML
     private ComboBox<String> estadoComboBox;
+    @FXML
+    private Button Deshacer;
+
+    @FXML
+    private Button Rehacer;
 
     private Mesero mesero;
+    private  OrdenCaretaker ordenCaretaker;;
 
     public void initialize() {
         tipoProductoComboBox.setItems(FXCollections.observableArrayList("Sandwich", "Bebida"));
@@ -40,7 +44,7 @@ public class ControladorMesero {
         double precio = Double.parseDouble(precioTextField.getText());
 
         mesero.hacerOrden(tipoProducto, nombre, precio);
-        actualizarListaOrden();
+         actualizarListaOrden();
     }
 
     @FXML
@@ -79,4 +83,30 @@ public class ControladorMesero {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void regresarALogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/proyectofinal/Vista/login.fxml"));
+            GridPane root = loader.load(); // Ajuste aquí
+            Stage stage = (Stage) nombreTextField.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void deshacer(){
+        mesero.deshacer();
+        actualizarListaOrden();
+    }
+
+    @FXML
+    public  void rehacer(){
+       mesero.rehacer();
+       actualizarListaOrden();
+    }
+
 }
