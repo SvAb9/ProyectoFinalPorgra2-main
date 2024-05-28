@@ -8,14 +8,14 @@ public class OrdenCaretaker {
 
     public void guardarMemento(Orden orden) {
         historial.push(orden.guardar());
-        rehacerHistorial.clear(); // Limpiar el historial de rehacer después de guardar un nuevo estado
+
     }
 
     public void deshacer(Orden orden) {
         if (!historial.isEmpty()) {
             OrdenMemento memento = historial.pop();
-            rehacerHistorial.push(orden.guardar());
             orden.restaurar(memento);
+            System.out.println("Deshacer realizado");
         } else {
             System.out.println("No hay nada que deshacer.");
         }
@@ -26,6 +26,7 @@ public class OrdenCaretaker {
             OrdenMemento memento = rehacerHistorial.pop();
             historial.push(orden.guardar());
             orden.restaurar(memento);
+            System.out.println("Rehacer realizado");
         } else {
             System.out.println("No hay nada que rehacer.");
         }

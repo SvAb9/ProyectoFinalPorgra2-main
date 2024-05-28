@@ -1,20 +1,21 @@
 package co.edu.proyectofinal.Controlador;
 
-import co.edu.proyectofinal.Modelo.*;
+import co.edu.proyectofinal.Modelo.Mesero;
+import co.edu.proyectofinal.Modelo.Producto;
+import co.edu.proyectofinal.Modelo.Temporada;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class ControladorMesero {
+    @FXML
+    private Button rehacer;
+    @FXML
+    private Button deshacer;
     @FXML
     private ComboBox<String> tipoProductoComboBox;
     @FXML
@@ -35,26 +36,27 @@ public class ControladorMesero {
         temporadaComboBox.setItems(FXCollections.observableArrayList(Temporada.values())); // Initialize the ComboBox with values from the Temporada enum
         estadoComboBox.setItems(FXCollections.observableArrayList("Pendiente", "Preparando", "Listo", "Entregado"));
         mesero = new Mesero("Juan", "Pérez", "jperez", "1234", "123456789", "mesero");
+
+
+
     }
-
-
 
     @FXML
     public void agregarProducto() {
         String tipoProducto = tipoProductoComboBox.getValue();
         String nombre = nombreTextField.getText();
         double precio = Double.parseDouble(precioTextField.getText());
-        Temporada temporada = temporadaComboBox.getValue(); // Get the selected season from the ComboBox
+        Temporada temporada = temporadaComboBox.getValue();
 
-        mesero.hacerOrden(tipoProducto, nombre, precio, temporada); // Pass the season to the hacerOrden method
+        mesero.hacerOrden(tipoProducto, nombre, precio, temporada);
         actualizarListaOrden();
     }
-
 
     @FXML
     public void actualizarEstadoOrden() {
         String estado = estadoComboBox.getValue();
         mesero.actualizarEstadoOrden(estado);
+        actualizarListaOrden();
     }
 
     private void actualizarListaOrden() {
@@ -65,7 +67,7 @@ public class ControladorMesero {
     }
 
     private void mostrarAlerta(String mensaje) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Información");
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
@@ -86,5 +88,19 @@ public class ControladorMesero {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void deshacer() {
+        mesero.deshacer();
+        actualizarListaOrden();
+        mostrarAlerta("Se ha deshecho la última acción.");
+    }
+
+    @FXML
+    private void rehacer() {
+        mesero.rehacer();
+        actualizarListaOrden();
+        mostrarAlerta("Se ha rehecho la última acción.");
     }
 }

@@ -64,7 +64,7 @@ public class Orden {
     }
 
     public void restaurar(OrdenMemento memento) {
-        productos = memento.getProductos();
+        productos = new ArrayList<>(memento.getProductos());
         estado = memento.getEstado();
     }
 }
