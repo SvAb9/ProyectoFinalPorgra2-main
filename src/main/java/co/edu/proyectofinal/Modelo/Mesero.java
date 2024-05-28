@@ -8,6 +8,7 @@ public class Mesero extends Empleado {
         super(nombre, apellido, usuario, contraseña, documento, tipo);
         this.orden = new Orden();
         this.caretaker = new OrdenCaretaker();
+        caretaker.guardarMemento(orden);
     }
 
     @Override
