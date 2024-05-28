@@ -20,6 +20,8 @@ public class ControladorVista {
     private ListView<String> ordenListView;
     @FXML
     private ComboBox<String> estadoComboBox;
+    @FXML
+    private ComboBox<Temporada> temporadaComboBox;
 
     private Mesero mesero;
     private Cajero cajero;
@@ -27,6 +29,7 @@ public class ControladorVista {
     public void initialize() {
         tipoProductoComboBox.setItems(FXCollections.observableArrayList("Sandwich", "Bebida"));
         estadoComboBox.setItems(FXCollections.observableArrayList("Pendiente", "Preparando", "Listo", "Entregado"));
+
 
         mesero = new Mesero("Juan", "Pérez", "jperez", "1234", "123456789", "mesero");
         cajero = new Cajero("Ana", "García", "agarcia", "5678", "987654321", "cajero");
@@ -37,8 +40,9 @@ public class ControladorVista {
         String tipoProducto = tipoProductoComboBox.getValue();
         String nombre = nombreTextField.getText();
         double precio = Double.parseDouble(precioTextField.getText());
+        Temporada temporada= temporadaComboBox.getValue();
 
-        mesero.hacerOrden(tipoProducto, nombre, precio);
+        mesero.hacerOrden(tipoProducto, nombre, precio, temporada);
         actualizarListaOrden();
     }
 
