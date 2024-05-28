@@ -4,37 +4,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectofinal.Controlador.ControladorMesero">
+<VBox spacing="10" style="-fx-background-color: #c4d0bd;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectofinal.Controlador.ControladorMesero">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
     <children>
         <HBox spacing="10">
             <children>
-                <ComboBox fx:id="tipoProductoComboBox" promptText="Tipo de Producto" />
-                <TextField fx:id="nombreTextField" promptText="Nombre" />
-                <TextField fx:id="precioTextField" promptText="Precio" />
-                <ComboBox fx:id="temporadaComboBox" promptText="Temporada" />
-                <Button onAction="#agregarProducto" text="Agregar Producto" />
+                <ComboBox fx:id="tipoProductoComboBox" promptText="Tipo de Producto" style="-fx-background-color: #6f7e69; -fx-background-radius: 20;" />
+                <TextField fx:id="nombreTextField" promptText="Nombre" style="-fx-background-radius: 10; -fx-background-color: #f2f7ef;" />
+                <TextField fx:id="precioTextField" promptText="Precio" style="-fx-background-radius: 10; -fx-background-color: #f2f7ef;" />
+                <ComboBox fx:id="temporadaComboBox" promptText="Temporada" style="-fx-background-color: #6f7e69; -fx-background-radius: 20;" />
+                <Button onAction="#agregarProducto" style="-fx-background-color: #93a18a; -fx-background-radius: 20;" text="Agregar Producto" />
             </children>
         </HBox>
-        <ListView fx:id="ordenListView" prefHeight="200" />
+        <ListView fx:id="ordenListView" prefHeight="200" style="-fx-background-color: #f2f7ef; -fx-background-radius: 20;" />
         <HBox spacing="10">
             <children>
-                <ComboBox fx:id="estadoComboBox" promptText="Estado de la Orden" />
-                <Button onAction="#actualizarEstadoOrden" text="Actualizar Estado" />
-            <Button mnemonicParsing="false" onAction="#deshacer" text="Deshacer">
+                <ComboBox fx:id="estadoComboBox" promptText="Estado de la Orden" style="-fx-background-color: #6f7e69; -fx-background-radius: 20;" />
+                <Button onAction="#actualizarEstadoOrden" style="-fx-background-color: #93a18a; -fx-background-radius: 20;" text="Actualizar Estado" />
+            <Button mnemonicParsing="false" onAction="#deshacer" style="-fx-background-color: #93a18a; -fx-background-radius: 20;" text="Deshacer">
                <HBox.margin>
                   <Insets left="200.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#rehacer" text="Rehacer">
+            <Button mnemonicParsing="false" onAction="#rehacer" style="-fx-background-color: #93a18a; -fx-background-radius: 20;" text="Rehacer">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
             </Button>
             </children>
         </HBox>
-        <Button onAction="#regresarACajero" text="Ir a Cajero" />
+        <Button onAction="#regresarACajero" style="-fx-background-color: #93a18a; -fx-background-radius: 20;" text="Ir a Cajero" />
     </children>
 </VBox>
