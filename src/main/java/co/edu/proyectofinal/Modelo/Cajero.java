@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Cajero extends Empleado implements  GetTipo {
+public class Cajero extends Empleado implements GetTipo {
     
     private List<Factura> listaFacturas;
+
 
     public Cajero(String nombre, String apellido, String usuario, String contraseña, String documento, String tipo) {
         super(nombre, apellido, usuario, contraseña, documento, tipo);
         this.listaFacturas = new ArrayList<>();
     }
+
+
 
     public Factura generarFactura (Orden orden){
 
@@ -43,4 +46,6 @@ public class Cajero extends Empleado implements  GetTipo {
     public String getTipo(){
         return "Cajero";
     }
+
+
 }

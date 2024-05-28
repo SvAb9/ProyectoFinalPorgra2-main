@@ -12,5 +12,7 @@
     <children>
         <ListView fx:id="ordenesListView" prefHeight="200" />
         <Button text="Cobrar Orden" onAction="#cobrarOrden" />
+        <ListView fx:id="facturaListView" prefHeight="200" />
+        <Button text="Regresar a Mesero" onAction="#regresarAMesero" /> <!-- Nuevo botón -->
     </children>
 </VBox>

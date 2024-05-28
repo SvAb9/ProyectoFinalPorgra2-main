@@ -16,7 +16,7 @@ public class Mesero extends Empleado {
         return "Mesero";
     }
 
-    public void hacerOrden(String tipoProducto, String nombre, double precio) {
+    public void hacerOrden(String tipoProducto, String nombre, double precio, Temporada temporada) {
         ProductoFactory factory;
         switch (tipoProducto.toLowerCase()) {
             case "sandwich":
@@ -27,9 +27,11 @@ public class Mesero extends Empleado {
                 break;
             default:
                 throw new IllegalArgumentException("Tipo de producto no válido: " + tipoProducto);
+        
         }
         Producto producto = factory.crearProducto(nombre, precio);
         orden.agregarProducto(producto);
+        orden.setTemporada(temporada);
         caretaker.guardarMemento(orden);
         System.out.println("Producto agregado a la orden: " + producto.getNombre());
     }

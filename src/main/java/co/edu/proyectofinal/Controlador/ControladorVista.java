@@ -38,7 +38,7 @@ public class ControladorVista {
         String nombre = nombreTextField.getText();
         double precio = Double.parseDouble(precioTextField.getText());
 
-        mesero.hacerOrden(tipoProducto, nombre, precio);
+        mesero.hacerOrden(tipoProducto, nombre, precio, temporada);
         actualizarListaOrden();
     }
 
