@@ -2,6 +2,7 @@ module co.edu.proyectofinal {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.base;
+    requires javafx.graphics;
     
 
     opens co.edu.proyectofinal to javafx.fxml;

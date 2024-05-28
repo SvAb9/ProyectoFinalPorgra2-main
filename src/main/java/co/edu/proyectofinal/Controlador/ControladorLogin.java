@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 
@@ -31,6 +32,16 @@ public class ControladorLogin {
     private List<Persona> usuarios;
 
     public void initialize(URL url, ResourceBundle rb) {
+        usuarioPersistencia = new UsuarioPersistencia();
+        try {
+            usuarios = usuarioPersistencia.obtenerUsuarios();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo de texto: " + e.getMessage());
+            mostrarAlerta("Error al cargar los usuarios");
+        }
+    }
+
+    public void initializableApp() {
         usuarioPersistencia = new UsuarioPersistencia();
         try {
             usuarios = usuarioPersistencia.obtenerUsuarios();
@@ -80,13 +91,13 @@ public class ControladorLogin {
 
     @FXML
     public void registrarUsuario() {
-        cargarVista("/co/edu/proyectofinal/Vista/registro.fxml");
+        cargarVista("registro.fxml");
     }
 
     private void cargarVista(String vista) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(vista));
-            GridPane root = loader.load(); // Ajuste aquí
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/proyectofinal/Vista/"+vista));
+            Parent root = loader.load(); // Ajuste aquí
             Stage stage = (Stage) usuarioTextField.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

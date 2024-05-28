@@ -32,6 +32,7 @@ public class UsuarioPersistencia {
              BufferedWriter bw= new BufferedWriter(fw)){
             bw.write(persona.toFileString());
             bw.newLine();
+            System.out.println("Usuario guardado: " + persona.toFileString());
         }catch(IOException e){
             System.out.println("Error al guardar el usuario" + e.getMessage());
             throw e;
@@ -45,6 +46,9 @@ public class UsuarioPersistencia {
             while ((linea = br.readLine()) != null) {
                 usuarios.add(Persona.fromFileString(linea));
             }
+        } catch (IOException e){
+            System.out.println("Error al leer el archivo de texto: " + e.getMessage());
+            throw e;
         }
         return usuarios;
     }

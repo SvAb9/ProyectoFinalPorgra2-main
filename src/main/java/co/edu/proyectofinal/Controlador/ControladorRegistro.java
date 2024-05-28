@@ -49,7 +49,7 @@ public class ControladorRegistro {
         String documento = documentoTextField.getText();
         String tipoUsuario = tipoUsuarioTextField.getText().toLowerCase();
 
-        Persona  nuevoUsuario= new Persona(nombre, apellido, documento, usuario, contraseña, tipoUsuario);
+        Persona  nuevoUsuario= new Persona(nombre, apellido,  usuario, contraseña, documento,tipoUsuario);
         try{
             servicioUsuario.añadirUsuario(nuevoUsuario);
         }catch(Exception e){

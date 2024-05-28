@@ -50,8 +50,8 @@ public class Persona implements  GetTipo{
 
     public static Persona fromFileString (String fileString){
         String[]parts = fileString.split(",");
-        if(parts.length == 6){
-            throw new IllegalArgumentException("El archivo debe ser exactamente 5 elementos");
+        if(parts.length != 6){
+            throw new IllegalArgumentException("El archivo debe ser exactamente 6 elementos");
         }
         return new Persona(parts[0].trim(),parts[1].trim(),parts[2].trim(),parts[3].trim(),parts[4].trim(), parts[5].trim());
     }
