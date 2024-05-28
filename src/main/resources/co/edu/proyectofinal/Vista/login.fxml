@@ -2,12 +2,19 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane alignment="CENTER" hgap="10" prefHeight="186.0" prefWidth="252.0" style="-fx-background-color: #c4d0bd;" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="co.edu.proyectofinal.Controlador.ControladorLogin">
-    <TextField fx:id="usuarioTextField" promptText="Usuario" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-    <PasswordField fx:id="contraseñaPasswordField" promptText="Contraseña" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-    <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="149.0" text="Iniciar Sesión" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <Button maxWidth="1.7976931348623157E308" onAction="#registrarUsuario" prefHeight="25.0" prefWidth="154.0" text="Registrarse" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+<GridPane alignment="CENTER" hgap="10" prefHeight="186.0" prefWidth="252.0" style="-fx-background-color: #c4d0bd;" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectofinal.Controlador.ControladorLogin">
+    <TextField fx:id="usuarioTextField" promptText="Usuario" style="-fx-background-color: #f2f7ef; -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <PasswordField fx:id="contraseñaPasswordField" promptText="Contraseña" style="-fx-background-color: #f2f7ef; -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="149.0" style="-fx-background-radius: 20; -fx-background-color: #93a18a;" text="Iniciar Sesión" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <font>
+         <Font name="Berlin Sans FB" size="13.0" />
+      </font></Button>
+    <Button maxWidth="1.7976931348623157E308" onAction="#registrarUsuario" prefHeight="25.0" prefWidth="154.0" style="-fx-background-radius: 20; -fx-background-color: #6f7e69;" text="Registrarse" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <font>
+         <Font name="Berlin Sans FB" size="13.0" />
+      </font></Button>
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
