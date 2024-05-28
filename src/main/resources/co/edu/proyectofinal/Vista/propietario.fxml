@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectofinal.Controlador.ControladorPropietario">
+<VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #c4d0bd;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectofinal.Controlador.ControladorPropietario">
    <children>
       <Label text="Nombre del Empleado:" />
-      <TextField fx:id="nombreEmpleadoTextField" />
+      <TextField fx:id="nombreEmpleadoTextField" style="-fx-background-radius: 10; -fx-background-color: #f2f7ef;" />
 
       <Label text="Apellido del Empleado:" />
-      <TextField fx:id="apellidoEmpleadoTextField" />
+      <TextField fx:id="apellidoEmpleadoTextField" style="-fx-background-radius: 10; -fx-background-color: #f2f7ef;" />
 
       <Label text="Usuario del Empleado:" />
-      <TextField fx:id="usuarioEmpleadoTextField" />
+      <TextField fx:id="usuarioEmpleadoTextField" style="-fx-background-radius: 10; -fx-background-color: #f2f7ef;" />
 
       <Label text="Contraseña del Empleado:" />
-      <TextField fx:id="contraseñaEmpleadoTextField" />
+      <TextField fx:id="contraseñaEmpleadoTextField" style="-fx-background-radius: 10; -fx-background-color: #f2f7ef;" />
 
       <Label text="Documento del Empleado:" />
-      <TextField fx:id="documentoEmpleadoTextField" />
+      <TextField fx:id="documentoEmpleadoTextField" style="-fx-background-radius: 10; -fx-background-color: #f2f7ef;" />
 
-      <Button text="Contratar Empleado" onAction="#contratarEmpleado" />
-      <Button text="Despedir Empleado" onAction="#despedirEmpleado" />
+      <Button onAction="#contratarEmpleado" style="-fx-background-radius: 20; -fx-background-color: #93a18a;" text="Contratar Empleado">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font></Button>
+      <Button onAction="#despedirEmpleado" style="-fx-background-radius: 20; -fx-background-color: #93a18a;" text="Despedir Empleado">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font></Button>
 
       <Label text="Empleados:" />
-      <ListView fx:id="empleadosListView" />
+      <ListView fx:id="empleadosListView" style="-fx-background-radius: 20; -fx-background-color: #f2f7ef;" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
