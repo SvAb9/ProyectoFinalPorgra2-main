@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="co.edu.proyectofinal.Controlador.ControladorMesero" spacing="10">
+<VBox spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectofinal.Controlador.ControladorMesero">
     <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
+        <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
     <children>
         <HBox spacing="10">
@@ -19,16 +15,26 @@
                 <TextField fx:id="nombreTextField" promptText="Nombre" />
                 <TextField fx:id="precioTextField" promptText="Precio" />
                 <ComboBox fx:id="temporadaComboBox" promptText="Temporada" />
-                <Button text="Agregar Producto" onAction="#agregarProducto" />
+                <Button onAction="#agregarProducto" text="Agregar Producto" />
             </children>
         </HBox>
         <ListView fx:id="ordenListView" prefHeight="200" />
         <HBox spacing="10">
             <children>
                 <ComboBox fx:id="estadoComboBox" promptText="Estado de la Orden" />
-                <Button text="Actualizar Estado" onAction="#actualizarEstadoOrden" />
+                <Button onAction="#actualizarEstadoOrden" text="Actualizar Estado" />
+            <Button mnemonicParsing="false" onAction="#deshacer" text="Deshacer">
+               <HBox.margin>
+                  <Insets left="200.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#rehacer" text="Rehacer">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Button>
             </children>
         </HBox>
-        <Button text="Ir a Cajero" onAction="#regresarACajero" />
+        <Button onAction="#regresarACajero" text="Ir a Cajero" />
     </children>
 </VBox>
