@@ -15,6 +15,7 @@ public class OrdenCaretaker {
         if (!historial.isEmpty()) {
             OrdenMemento memento = historial.pop();
             orden.restaurar(memento);
+            rehacerHistorial.push(orden.guardar());
             System.out.println("Deshacer realizado");
         } else {
             System.out.println("No hay nada que deshacer.");
