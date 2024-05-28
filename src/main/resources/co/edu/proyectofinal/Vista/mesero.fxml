@@ -18,6 +18,7 @@
                 <ComboBox fx:id="tipoProductoComboBox" promptText="Tipo de Producto" />
                 <TextField fx:id="nombreTextField" promptText="Nombre" />
                 <TextField fx:id="precioTextField" promptText="Precio" />
+                <ComboBox fx:id="temporadaComboBox" promptText="Temporada" />
                 <Button text="Agregar Producto" onAction="#agregarProducto" />
             </children>
         </HBox>

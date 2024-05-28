@@ -2,6 +2,7 @@ package co.edu.proyectofinal.Controlador;
 
 import co.edu.proyectofinal.Modelo.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
@@ -24,24 +25,31 @@ public class ControladorMesero {
     private ListView<String> ordenListView;
     @FXML
     private ComboBox<String> estadoComboBox;
+    @FXML
+    private ComboBox<Temporada> temporadaComboBox; // ComboBox for selecting the season
 
     private Mesero mesero;
 
     public void initialize() {
         tipoProductoComboBox.setItems(FXCollections.observableArrayList("Sandwich", "Bebida"));
+        temporadaComboBox.setItems(FXCollections.observableArrayList(Temporada.values())); // Initialize the ComboBox with values from the Temporada enum
         estadoComboBox.setItems(FXCollections.observableArrayList("Pendiente", "Preparando", "Listo", "Entregado"));
         mesero = new Mesero("Juan", "Pérez", "jperez", "1234", "123456789", "mesero");
     }
+
+
 
     @FXML
     public void agregarProducto() {
         String tipoProducto = tipoProductoComboBox.getValue();
         String nombre = nombreTextField.getText();
         double precio = Double.parseDouble(precioTextField.getText());
+        Temporada temporada = temporadaComboBox.getValue(); // Get the selected season from the ComboBox
 
-        mesero.hacerOrden(tipoProducto, nombre, precio);
+        mesero.hacerOrden(tipoProducto, nombre, precio, temporada); // Pass the season to the hacerOrden method
         actualizarListaOrden();
     }
+
 
     @FXML
     public void actualizarEstadoOrden() {

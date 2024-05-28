@@ -1,6 +1,6 @@
 package co.edu.proyectofinal.Modelo;
 
-public class CuponPrimerRegistro implements CuponStrategy{
+public class CuponHalloween implements CuponStrategy{
 
     @Override
     public double aplicarDescuento(double total) {
